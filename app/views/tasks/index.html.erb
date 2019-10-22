@@ -1,0 +1,37 @@
+<h1>My tasks</h1>
+
+<% @tasks.each do |task| %>
+<p>
+  <%= check_box('task', task.id, {checked: task.completed}) %>
+  <%= link_to task.title, task_path(task) %>
+  <%= link_to "Edit task", edit_task_path(task) %>
+  <%= link_to "Delete", task_path(task), method: :delete %>
+  <%= link_to '<i class="fas fa-trash"></i>'.html_safe, task_path(task.id),
+  method: :delete,
+  data: { confirm: "Are you sure?" } %>
+</p>
+<% end %>
+  <%= link_to "Add a new Task", tasks_new_path %>
+
+<!-- <ul>
+  <% @tasks.each do |task| %>
+  <% if task.completed == true %>
+    <li>
+      <i class="fas fa-check circle"></i>
+    </li>
+    <% else %>
+    <li>
+      <i class="fal fa-circle"></i>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to task.title, task_path(task) %>
+  </li>
+  <%= link_to "Edit task", edit_task_path(task) %>
+  <br>
+  <%= link_to "Delete", task_path(task), method: :delete %>
+  <% end %>
+  <br>
+  <%= link_to "Create new", tasks_new_path %>
+</ul>
+ -->
